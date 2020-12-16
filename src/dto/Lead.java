@@ -157,7 +157,7 @@ public class Lead extends GenericModel {
     }
     
     public String toCSVLine() {
-        return leadId + "," + vehicleId + "," + dealerName + "," + firstName + "," + lastName + "," + emailAddress + "," + phoneNumber + "," + zipCode + "," +
+        return leadId + "," + vehicleId + "," + dealerName + "," + firstName + "," + lastName + "," + emailAddress + "," + phoneNumber + "," + 
                 zipCode + "," + usePurpose + "," + contactPreference + "," + contactTime + "," + message;
     }
 
