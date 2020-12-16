@@ -137,7 +137,8 @@ public class LeadDataHelper {
         List<Vehicle>  vehicles = new ArrayList<>();
         for (Lead lead : originalLeads) {
             if (lead.getEmailAddress().equals(email)) {
-                vehicles.add(getVehicle(lead.getVehicleId()));
+                Vehicle v = getVehicle(lead.getVehicleId());
+                if (v != null) vehicles.add(v);
             }
         }
         
@@ -196,6 +197,7 @@ public class LeadDataHelper {
         }
         
         dp.writeLeads(newLeads);
+        this.reloadData();
     }
 
     public List<Lead> filter(List<Lead> leads, String filterType, String value) {
@@ -215,5 +217,14 @@ public class LeadDataHelper {
             }
         }
         return filteredLeads;
+    }
+
+    public String getDealerName(String dealerId) {
+        for (Dealer dealer : dealers) {
+            if(dealer.getDealerId().equals(dealerId)) {
+                return dealer.getDealerName();
+            }
+        }
+        return null;
     }
 }
