@@ -501,8 +501,8 @@ public class ShowAndSearchUI2 extends JFrame {
             JButton showIncentives=new JButton("Show Incentives");
 
             // for case6
-            float specialPrice = 0.00f;
-            if (i > 0) {
+            String specialPrice = "none";
+            if (!"price".equals(arrayListOfString.get(i)[8])) {
                 incentiveApi = new IncentiveApiImpl();
 
                 String dealerName = arrayListOfString.get(i)[1];
@@ -512,9 +512,11 @@ public class ShowAndSearchUI2 extends JFrame {
                 Special special = specialModel.getSpecial();
 
                 if (special != null) {
-                    specialPrice = specialModel.getSpecialPrice();
+                    float sPrice = specialModel.getSpecialPrice();
+                    specialPrice = String.valueOf(sPrice);
                 } else {
                     showIncentives.setVisible(false);
+                    specialPrice = "none";
                 }
             }
 
